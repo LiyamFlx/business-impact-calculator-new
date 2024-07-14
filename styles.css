@@ -69,3 +69,11 @@ h2 {
 .back-button:hover {
     background-color: #333;
 }
+
+#summary p {
+    margin: 5px 0;
+}
+
+#results {
+    margin-top: 20px;
+}
