@@ -39,8 +39,34 @@ function showSummary() {
 }
 
 function submitForm() {
-    alert('Form submitted successfully!');
-    console.log(formData);
+    const results = document.getElementById('results');
+    const impactScore = calculateImpact();
+    results.innerHTML = `
+        <h3>Your Impact Score: ${impactScore.toFixed(2)}%</h3>
+    `;
+    nextStep();
+}
+
+function calculateImpact() {
+    const S = parseFloat(formData.marketSize);
+    const P = parseFloat(formData.growthPotential);
+    const D = parseFloat(formData.importanceDifficulty);
+    const C = parseFloat(formData.importanceChallenge);
+
+    const w_S = parseFloat(formData.importanceOpportunity);
+    const w_P = parseFloat(formData.importanceImpact);
+    const w_D = parseFloat(formData.importanceDifficulty);
+    const w_C = parseFloat(formData.importanceChallenge);
+
+    const rawImpact = (w_S * S) + (w_P * P) - (w_D * D) - (w_C * C);
+
+    // Constants for normalization
+    const minScore = -298;
+    const maxScore = 399;
+
+    const normalizedImpact = ((rawImpact - minScore) / (maxScore - minScore)) * 100;
+    
+    return normalizedImpact;
 }
 
 document.addEventListener('keydown', function(event) {
