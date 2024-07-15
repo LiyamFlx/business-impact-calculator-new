@@ -1,123 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Impact Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step-Based Form</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="form-container">
-        <div id="form-start" class="form-step active">
-            <h2>Welcome to the Business Impact Calculator</h2>
-            <p>Estimated completion time: 2 minutes</p>
-            <button onclick="nextStep()">Start</button>
-        </div>
-        
-        <div id="form-step-1" class="form-step">
-            <h2>Step 1: Assessing the Market</h2>
-            <p>Question 1: What is the potential market size for this opportunity?</p>
-            <div class="options">
-                <button onclick="selectOption(1, 'marketSize', 1)">Small (&lt; 1 million)</button>
-                <button onclick="selectOption(1, 'marketSize', 2)">Medium (1 million - 10 million)</button>
-                <button onclick="selectOption(1, 'marketSize', 3)">Large (10 million - 100 million)</button>
-                <button onclick="selectOption(1, 'marketSize', 4)">Very Large (100 million - 1 billion)</button>
-                <button onclick="selectOption(1, 'marketSize', 5)">Extremely Large (&gt; 1 billion)</button>
-            </div>
-            <button class="back-button" onclick="prevStep()">Back</button>
-        </div>
-
-        <div id="form-step-2" class="form-step">
-            <h2>Step 1: Assessing the Market</h2>
-            <p>Question 2: How would you rate the growth potential of this market?</p>
-            <div class="options">
-                <button onclick="selectOption(2, 'growthPotential', 1)">Stagnant (0-2% annually)</button>
-                <button onclick="selectOption(2, 'growthPotential', 2)">Slow Growth (2-5% annually)</button>
-                <button onclick="selectOption(2, 'growthPotential', 3)">Moderate Growth (5-10% annually)</button>
-                <button onclick="selectOption(2, 'growthPotential', 4)">High Growth (10-20% annually)</button>
-                <button onclick="selectOption(2, 'growthPotential', 5)">Explosive Growth (&gt; 20% annually)</button>
-            </div>
-            <button class="back-button" onclick="prevStep()">Back</button>
-        </div>
-
-        <div id="form-step-3" class="form-step">
-            <h2>Step 1: Assessing the Market</h2>
-            <p>Question 3: What is the potential market cap for this opportunity?</p>
-            <div class="options">
-                <button onclick="selectOption(3, 'marketCap', 1)">Small (&lt; $1 billion)</button>
-                <button onclick="selectOption(3, 'marketCap', 2)">Medium ($1 billion - $10 billion)</button>
-                <button onclick="selectOption(3, 'marketCap', 3)">Large ($10 billion - $100 billion)</button>
-                <button onclick="selectOption(3, 'marketCap', 4)">Very Large ($100 billion - $1 trillion)</button>
-                <button onclick="selectOption(3, 'marketCap', 5)">Extremely Large (&gt; $1 trillion)</button>
-            </div>
-            <button class="back-button" onclick="prevStep()">Back</button>
-        </div>
-
-        <div id="form-step-4" class="form-step">
-            <h2>Step 2: Impact and Execution</h2>
-            <p>Question 4: How important is seizing new opportunities?</p>
-            <div class="options">
-                <button onclick="selectOption(4, 'importanceOpportunity', 1)">Not Important</button>
-                <button onclick="selectOption(4, 'importanceOpportunity', 2)">Somewhat Important</button>
-                <button onclick="selectOption(4, 'importanceOpportunity', 3)">Important</button>
-                <button onclick="selectOption(4, 'importanceOpportunity', 4)">Very Important</button>
-                <button onclick="selectOption(4, 'importanceOpportunity', 5)">Extremely Important</button>
-            </div>
-            <button class="back-button" onclick="prevStep()">Back</button>
-        </div>
-
-        <div id="form-step-5" class="form-step">
-            <h2>Step 2: Impact and Execution</h2>
-            <p>Question 5: How important is the potential impact?</p>
-            <div class="options">
-                <button onclick="selectOption(5, 'importanceImpact', 1)">Not Important</button>
-                <button onclick="selectOption(5, 'importanceImpact', 2)">Somewhat Important</button>
-                <button onclick="selectOption(5, 'importanceImpact', 3)">Important</button>
-                <button onclick="selectOption(5, 'importanceImpact', 4)">Very Important</button>
-                <button onclick="selectOption(5, 'importanceImpact', 5)">Extremely Important</button>
-            </div>
-            <button class="back-button" onclick="prevStep()">Back</button>
-        </div>
-
-        <div id="form-step-6" class="form-step">
-            <h2>Step 2: Impact and Execution</h2>
-            <p>Question 6: How important is the difficulty of execution?</p>
-            <div class="options">
-                <button onclick="selectOption(6, 'importanceDifficulty', 1)">Not Important</button>
-                <button onclick="selectOption(6, 'importanceDifficulty', 2)">Somewhat Important</button>
-                <button onclick="selectOption(6, 'importanceDifficulty', 3)">Important</button>
-                <button onclick="selectOption(6, 'importanceDifficulty', 4)">Very Important</button>
-                <button onclick="selectOption(6, 'importanceDifficulty', 5)">Extremely Important</button>
-            </div>
-            <button class="back-button" onclick="prevStep()">Back</button>
-        </div>
-
-        <div id="form-step-7" class="form-step">
-            <h2>Step 2: Impact and Execution</h2>
-            <p>Question 7: How important are challenges in construction and operation?</p>
-            <div class="options">
-                <button onclick="selectOption(7, 'importanceChallenge', 1)">Not Important</button>
-                <button onclick="selectOption(7, 'importanceChallenge', 2)">Somewhat Important</button>
-                <button onclick="selectOption(7, 'importanceChallenge', 3)">Important</button>
-                <button onclick="selectOption(7, 'importanceChallenge', 4)">Very Important</button>
-                <button onclick="selectOption(7, 'importanceChallenge', 5)">Extremely Important</button>
-            </div>
-            <button class="back-button" onclick="prevStep()">Back</button>
-        </div>
-
-        <div id="form-summary" class="form-step">
-            <h2>Summary and Submission</h2>
-            <div id="summary"></div>
-            <button onclick="submitForm()">Submit</button>
-            <button class="back-button" onclick="prevStep()">Back</button>
-        </div>
-
-        <div id="form-results" class="form-step">
-            <h2>Results</h2>
-            <div id="results"></div>
-        </div>
+  <div class="form-container">
+    <div class="progress-bar">
+      <div class="progress" style="width: 20%;"></div>
+      <span class="step-counter">Step 1 of 5</span>
     </div>
+    <div class="form-step" id="step-1">
+      <h1>What is your age?</h1>
+      <input type="text" id="age-input" placeholder="Enter your age">
+      <div class="buttons">
+        <button id="next-1">Next</button>
+      </div>
+    </div>
+    <div class="form-step" id="step-2" style="display:none;">
+      <h1 id="follow-up-question"></h1>
+      <div class="buttons">
+        <button id="back-2">Back</button>
+        <button id="next-2">Next</button>
+      </div>
+    </div>
+    <!-- Additional steps go here -->
+    <div class="form-step" id="review-step" style="display:none;">
+      <h1>Review Your Information</h1>
+      <div id="review-content"></div>
+      <div class="buttons">
+        <button id="back-review">Back</button>
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+    <div class="form-step" id="completion-step" style="display:none;">
+      <h1>Thank you for your submission!</h1>
+      <div class="feedback">
+        <label for="feedback">How was your experience?</label>
+        <input type="text" id="feedback" placeholder="Your feedback">
+      </div>
+    </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
