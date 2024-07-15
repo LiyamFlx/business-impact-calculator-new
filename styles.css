@@ -1,79 +1,61 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  background-color: black;
+  color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 .form-container {
-    max-width: 600px;
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
 }
 
-.form-container:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 5px;
+  background-color: white;
+  width: 0;
+  transition: width 0.3s;
+}
+
+.step-counter {
+  font-size: 14px;
 }
 
 .form-step {
-    display: none;
+  display: none;
 }
 
 .form-step.active {
-    display: block;
+  display: block;
 }
 
-h2 {
-    margin-top: 0;
-    color: #333;
-    font-size: 24px;
-    border-bottom: 2px solid #0073e6;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+.buttons {
+  margin-top: 20px;
 }
 
-.options {
-    display: flex;
-    flex-direction: column;
+button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.3s;
 }
 
-.options button {
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #0073e6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease-in-out;
+button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
 }
 
-.options button:hover {
-    background-color: #005bb5;
-}
-
-.back-button {
-    background-color: #555;
-}
-
-.back-button:hover {
-    background-color: #333;
-}
-
-#summary p {
-    margin: 5px 0;
-}
-
-#results {
-    margin-top: 20px;
+button:active {
+  transform: scale(0.95);
 }
