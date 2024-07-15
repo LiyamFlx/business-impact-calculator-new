@@ -1,76 +1,38 @@
-let currentStep = 0;
-const formSteps = document.querySelectorAll('.form-step');
-const formData = {};
+document.addEventListener('DOMContentLoaded', () => {
+  const steps = Array.from(document.querySelectorAll('.form-step'));
+  let currentStep = 0;
 
-function nextStep() {
-    if (currentStep < formSteps.length - 1) {
-        formSteps[currentStep].classList.remove('active');
-        currentStep++;
-        formSteps[currentStep].classList.add('active');
+  document.getElementById('next-1').addEventListener('click', () => {
+    const age = document.getElementById('age-input').value;
+    if (age) {
+      document.getElementById('follow-up-question').textContent = age < 18 ? 'Do you have parental consent?' : 'Are you currently a student?';
+      showStep(1);
     } else {
-        showSummary();
+      shakeInput('age-input');
     }
-}
+  });
 
-function prevStep() {
-    if (currentStep > 0) {
-        formSteps[currentStep].classList.remove('active');
-        currentStep--;
-        formSteps[currentStep].classList.add('active');
-    }
-}
+  document.getElementById('back-2').addEventListener('click', () => showStep(0));
+  document.getElementById('next-2').addEventListener('click', () => showStep(2));
+  document.getElementById('back-review').addEventListener('click', () => showStep(1));
+  document.getElementById('submit').addEventListener('click', () => showStep(3));
 
-function selectOption(step, field, value) {
-    formData[field] = value;
-    nextStep();
-}
+  function showStep(index) {
+    steps[currentStep].classList.remove('active');
+    steps[index].classList.add('active');
+    updateProgress(index);
+    currentStep = index;
+  }
 
-function showSummary() {
-    const summary = document.getElementById('summary');
-    summary.innerHTML = `
-        <p>Market Size: ${formData.marketSize}</p>
-        <p>Growth Potential: ${formData.growthPotential}</p>
-        <p>Market Cap: ${formData.marketCap}</p>
-        <p>Importance of Opportunity: ${formData.importanceOpportunity}</p>
-        <p>Importance of Impact: ${formData.importanceImpact}</p>
-        <p>Difficulty of Execution: ${formData.importanceDifficulty}</p>
-        <p>Challenges in Construction: ${formData.importanceChallenge}</p>
-    `;
-}
+  function updateProgress(step) {
+    const progress = document.querySelector('.progress');
+    progress.style.width = `${(step + 1) / steps.length * 100}%`;
+    document.querySelector('.step-counter').textContent = `Step ${step + 1} of ${steps.length}`;
+  }
 
-function submitForm() {
-    const results = document.getElementById('results');
-    const impactScore = calculateImpact();
-    results.innerHTML = `
-        <h3>Your Impact Score: ${impactScore.toFixed(2)}%</h3>
-    `;
-    nextStep();
-}
-
-function calculateImpact() {
-    const S = parseFloat(formData.marketSize);
-    const P = parseFloat(formData.growthPotential);
-    const D = parseFloat(formData.importanceDifficulty);
-    const C = parseFloat(formData.importanceChallenge);
-
-    const w_S = parseFloat(formData.importanceOpportunity);
-    const w_P = parseFloat(formData.importanceImpact);
-    const w_D = parseFloat(formData.importanceDifficulty);
-    const w_C = parseFloat(formData.importanceChallenge);
-
-    const rawImpact = (w_S * S) + (w_P * P) - (w_D * D) - (w_C * C);
-
-    // Constants for normalization
-    const minScore = -298;
-    const maxScore = 399;
-
-    const normalizedImpact = ((rawImpact - minScore) / (maxScore - minScore)) * 100;
-    
-    return normalizedImpact;
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        nextStep();
-    }
+  function shakeInput(inputId) {
+    const input = document.getElementById(inputId);
+    input.classList.add('shake');
+    setTimeout(() => input.classList.remove('shake'), 300);
+  }
 });
