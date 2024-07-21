@@ -35,7 +35,7 @@ This repository contains a step-based form designed to help users assess the bus
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/business-impact-calculator.git
+    git clone https://github.com/LiyamFlx/business-impact-calculator.git
     ```
 2. Navigate to the project directory:
     ```bash
