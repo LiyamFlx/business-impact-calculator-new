@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Step-Based Form</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="form-container">
-    <div class="progress-bar-container">
-      <div class="progress-bar">
-        <div class="progress" style="width: 20%;"></div>
-      </div>
-      <span class="step-counter">Step 1 of 5</span>
+    <div class="quiz-container">
+        <div class="progress-bar" id="progress-bar"></div>
+        <form id="quiz-form">
+            <div class="question-container active" data-step="1">
+                <h2>What type of website do you want to create?</h2>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="website-type" value="business">
+                        <img src="images/icon-business.png" alt="Business">
+                        Business (Including Online Store)
+                    </label>
+                    <label>
+                        <input type="radio" name="website-type" value="blog">
+                        <img src="images/icon-blog.png" alt="Blog">
+                        Blog
+                    </label>
+                    <label>
+                        <input type="radio" name="website-type" value="informational">
+                        <img src="images/icon-informational.png" alt="Informational">
+                        Informational
+                    </label>
+                    <label>
+                        <input type="radio" name="website-type" value="portfolio">
+                        <img src="images/icon-portfolio.png" alt="Portfolio">
+                        Portfolio
+                    </label>
+                </div>
+                <p class="error-message" id="error-message-step-1">This field is required</p>
+                <button type="button" class="next-btn" onclick="nextStep(1)">Next</button>
+            </div>
+            <!-- Additional steps here -->
+            <div class="results-container" id="results-container">
+                <h2>Loading your customized results now...</h2>
+                <div class="loading-bar"><div class="loading-progress" id="loading-progress"></div></div>
+                <div class="results" id="results">
+                    <!-- Results will be displayed here -->
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-step active" id="step-1">
-      <h1>What is your age?</h1>
-      <input type="text" id="age-input" placeholder="Enter your age">
-      <div class="buttons">
-        <button id="next-1">Next</button>
-      </div>
-    </div>
-    <div class="form-step" id="step-2">
-      <h1 id="follow-up-question"></h1>
-      <div class="buttons">
-        <button id="back-2">Back</button>
-        <button id="next-2">Next</button>
-      </div>
-    </div>
-    <div class="form-step" id="review-step">
-      <h1>Review Your Information</h1>
-      <div id="review-content"></div>
-      <div class="buttons">
-        <button id="back-review">Back</button>
-        <button id="submit">Submit</button>
-      </div>
-    </div>
-    <div class="form-step" id="completion-step">
-      <h1>Thank you for your submission!</h1>
-      <div class="feedback">
-        <label for="feedback">How was your experience?</label>
-        <input type="text" id="feedback" placeholder="Your feedback">
-      </div>
-    </div>
-  </div>
-
-  <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
