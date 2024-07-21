@@ -1,6 +1,7 @@
 let currentStep = 1;
 const totalSteps = 4;
 
+// Function to move to the next step
 function nextStep(step) {
     const currentContainer = document.querySelector(`.question-container[data-step="${step}"]`);
     const nextContainer = document.querySelector(`.question-container[data-step="${step + 1}"]`);
@@ -8,12 +9,14 @@ function nextStep(step) {
     const errorMessage = document.getElementById(`error-message-step-${step}`);
     let isChecked = false;
 
+    // Check if any of the inputs are checked
     inputs.forEach(input => {
         if (input.checked) {
             isChecked = true;
         }
     });
 
+    // If an input is checked, move to the next step
     if (isChecked) {
         errorMessage.style.display = 'none';
         currentContainer.classList.remove('active');
@@ -24,6 +27,7 @@ function nextStep(step) {
     }
 }
 
+// Function to move to the previous step
 function previousStep(step) {
     const currentContainer = document.querySelector(`.question-container[data-step="${step}"]`);
     const previousContainer = document.querySelector(`.question-container[data-step="${step - 1}"]`);
@@ -32,12 +36,14 @@ function previousStep(step) {
     updateProgressBar(step - 1);
 }
 
+// Function to update the progress bar
 function updateProgressBar(step) {
     const progressBar = document.getElementById('progress-bar');
     const progress = (step / totalSteps) * 100;
     progressBar.style.width = `${progress}%`;
 }
 
+// Function to show results after completing the quiz
 function showResults() {
     const quizForm = document.getElementById('quiz-form');
     const resultsContainer = document.getElementById('results-container');
@@ -52,6 +58,7 @@ function showResults() {
     }, 2000); // Simulate loading time
 }
 
+// Function to display the results
 function displayResults() {
     const results = document.getElementById('results');
     results.innerHTML = `
