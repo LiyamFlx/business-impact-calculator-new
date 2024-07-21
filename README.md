@@ -52,7 +52,6 @@ This repository contains a step-based form designed to help users assess the bus
 - `index.html`: The main HTML file containing the form structure.
 - `styles.css`: The CSS file for styling the form.
 - `script.js`: The JavaScript file for handling form interactions and navigation.
-- `images/`: Directory containing icon images used in the form.
 
 ## Customization
 
@@ -76,10 +75,6 @@ You can customize the form by editing the HTML, CSS, and JavaScript files. Here 
 1. **Update CSS**:
     - Modify `styles.css` to change the look and feel of the form.
     - Update colors, fonts, and layout as needed.
-
-2. **Update Images**:
-    - Replace images in the `images/` directory with your own icons.
-    - Ensure the new images have the same names or update the image paths in `index.html`.
 
 ### Modifying the Results Page
 
